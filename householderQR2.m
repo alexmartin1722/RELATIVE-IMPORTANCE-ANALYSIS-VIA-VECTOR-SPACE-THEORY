@@ -12,6 +12,7 @@ function [Q,R] = householderQR2(X)
 % Output:
 %   Q: Orthogonal matrix 
 %   R: Upper triangular  matrix 
+% https://en.wikipedia.org/wiki/Householder_transformation#QR_decomposition
 
 [m,n] = size(X);
 Q = eye(m);
