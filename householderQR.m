@@ -11,30 +11,18 @@ function [Q,R] = householderQR(X)
 %   X: an m,n matrix 
 % Output:
 %   Q: Orthogonal matrix 
-%   R: Transformed matrix 
+%   R: Upper triangular  matrix 
 
 [m,n] = size(X);
-Q = eye(m); %Initial orthogonal matrix 
-R = X; 
+Q = eye(m);
+R = X;
 
 for i = 1:n
-    normr = norm(R(i:end,i));
-    s = -sign(R(i,i));
-    u = R(i,i) - s*normr;
-    v = R(i:end,i)/u;
-    v(1) = 1;
-    tau = -s*u/normr;
+    z = R(i,i)-(-sign(R(i,i))*norm(R(i:end,i)));
+    v = R(i:end,i)/z;
+    v(1) = 1
+    p = (sign(R(i,i))*z)/norm(R(i:end,i))
 
-
-    R(i:end,:) = R(i:end,:)-(tau*v)*(v'*R(i:end,:));
-    Q(:,i:end) = Q(:,i:end)-(Q(:,i:end)*v)*(tau*v)';
+    R(i:end,:) = R(i:end,:)-(p*v)*(v'*R(i:end,:));
+    Q(:,i:end) = Q(:,i:end)-(Q(:,i:end)*v)*(p*v)';
 end
-Q
-R
-
-    
-
-
-
-
-
