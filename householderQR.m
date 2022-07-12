@@ -26,3 +26,13 @@ for i = 1:n
     R(i:end,:) = R(i:end,:)-(p*v)*(v'*R(i:end,:));
     Q(:,i:end) = Q(:,i:end)-(Q(:,i:end)*v)*(p*v)';
 end
+Q = Q*-1
+R = triu(R) * -1
+
+
+    
+
+
+
+
+
