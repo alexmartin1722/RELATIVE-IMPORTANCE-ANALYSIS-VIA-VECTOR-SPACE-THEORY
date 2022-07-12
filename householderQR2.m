@@ -20,13 +20,11 @@ R = X;
 for i = 1:m-1
     x = R(i:m, i);
     v = -sign(x(1))*norm(x)*eye(m-i+1,1)-x;
-    if norm(v)>0
-        v=v/norm(v);
-        P=eye(m); 
-        P(i:m,i:m)=P(i:m,i:m)-2*v*v';
-        R=P*R;
-        Q=Q*P;
-    end
+    v=v/norm(v);
+    P=eye(m); 
+    P(i:m,i:m)=P(i:m,i:m)-2*v*v';
+    R=P*R;
+    Q=Q*P;
 end
 Q  = Q * -1
 R = triu(R) * -1
