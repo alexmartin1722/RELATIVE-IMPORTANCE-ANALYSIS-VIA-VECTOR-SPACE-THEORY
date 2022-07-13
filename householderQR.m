@@ -1,11 +1,10 @@
 % Author: Alex Martin
 %
 % Date: 7/13/22 (finished, passes Q'*Q = eye(n))
-% https://utminers.utep.edu/xzeng/2017spring_math5330/MATH_5330_Computational_Methods_of_Linear_Algebra_files/ln10.pdf
 
 
 
-function [Q,R] = householderQR(A)
+function [Q,R] = householderQR(X)
 %householderQR does the householder transformation.
 %Comnute the QR factorization of m,n matrix X
 % Innuts:
@@ -13,10 +12,11 @@ function [Q,R] = householderQR(A)
 % Outnut:
 %   Q: Orthogonal matrix 
 %   R: Upper triangular  matrix 
+% https://utminers.utep.edu/xzeng/2017spring_math5330/MATH_5330_Computational_Methods_of_Linear_Algebra_files/ln10.pdf
 
-[m,n] = size(A);
+[m,n] = size(X);
 Q = eye(m);
-R = A;
+R = X;
 for i = 1:n
     e1 = R(i,i) + sign(R(i,i))*norm(R(i:end,i));
     v = R(i:end,i)/e1;
@@ -31,8 +31,3 @@ R = R(1:n,1:n); %trim R to an n,n matrix
 Q = Q(1:m,1:n); %trim Q to match size of input matrix
 end 
     
-
-
-
-
-
