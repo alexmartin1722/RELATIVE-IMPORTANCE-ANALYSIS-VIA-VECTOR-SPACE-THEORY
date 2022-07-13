@@ -1,6 +1,8 @@
 % Author: Alex Martin
 %
 % Date: 7/13/22 (finished, passes Q'*Q = eye(n))
+% https://utminers.utep.edu/xzeng/2017spring_math5330/MATH_5330_Computational_Methods_of_Linear_Algebra_files/ln10.pdf
+
 
 
 
@@ -12,7 +14,6 @@ function [Q,R] = householderQR(X)
 % Outnut:
 %   Q: Orthogonal matrix 
 %   R: Upper triangular  matrix 
-% https://utminers.utep.edu/xzeng/2017spring_math5330/MATH_5330_Computational_Methods_of_Linear_Algebra_files/ln10.pdf
 
 [m,n] = size(X);
 Q = eye(m);
