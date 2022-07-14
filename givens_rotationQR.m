@@ -1,6 +1,6 @@
 % Author: Alex Martin
 %
-% Date: 7/14/22
+% Date: 7/14/22 (finished passes Q'*Q=I)
 %https://www.math.usm.edu/lambers/mat610/sum10/lecture9.pdf
 function [Q,R] = givens_rotationQR(X)
 %givens_rotation does the Gives Rotation process.
