@@ -1,3 +1,5 @@
+% Author: Alex Martin
+% 
 % 1. Input matrix X
 % 2. Size(X)= (rows, col)=(a,b)
 % 3. N=0
@@ -18,7 +20,7 @@
 % 18. store (e(N)),d(N)) a 2 column matrix J size(J)=(a-2,2)
 % 19. if N<a-2 go to 4, otherwise stop and write J
 
-function func(X)
+function func(X, m, p)
     [a,b] = size(X);
     N = 0;
     while N < a-2
@@ -48,8 +50,8 @@ function func(X)
             end
         end
         
-        A = T(:, 1:(3*b)/4);
-        B = T(:, 1:end-1);
+        A = T(:, 1:m);
+        B = T(:, 1:m+p);
         C = T(:, end);
         
         [QA1, RA1] = householderQR(A);
