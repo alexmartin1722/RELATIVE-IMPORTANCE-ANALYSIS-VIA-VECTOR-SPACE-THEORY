@@ -20,9 +20,10 @@
 % 18. store (e(N)),d(N)) a 2 column matrix J size(J)=(a-2,2)
 % 19. if N<a-2 go to 4, otherwise stop and write J
 
-function func(X, m, p)
+function J = func(X, m, p)
     [a,b] = size(X);
     N = 0;
+    J = [];
     while N < a-2
         [a,b] = size(X);
         N = N+1;
@@ -34,8 +35,8 @@ function func(X, m, p)
         tempBetween = X(minimum+1:maximum-1,:);
         tempMax = X(maximum+1:end, :);
     
-        X = cat(1, tempMin, tempBetween);
-        X = cat(1, X, tempMax);
+        tX = cat(1, tempMin, tempBetween);
+        tX = cat(1, X, tempMax);
     
         [x,y] = size(X);
 %         if x == a-2 && b==y
@@ -43,7 +44,7 @@ function func(X, m, p)
 %         end
     
     %     normalize X transform by Xsubi = x_{ij} -E(X_{i}/ ||X_{i}||
-        T = X;
+        T = tX;
         for i = 1:x
             for j = 1:y
                 T(i,j) = (X(i,j) - mean(X(:, j)))/norm(X(:,j));
@@ -57,7 +58,6 @@ function func(X, m, p)
         [QA1, RA1] = householderQR(A);
         [QB1, RB1] = householderQR(B);
         QA1*QA1' == QB1*QB1';
-        QA*QA' == QB*QB';
         
         D = QA1*QA1' * C;
         E = QB1*QB1' *C;
@@ -65,9 +65,11 @@ function func(X, m, p)
         d = norm(D);
         e = norm(E);
     
-        J = [e,d];
+%         J = [e,d];
+        J = cat(1,J,[e,d]);
+        
     end
-    J
+    J;
 end
 
     
